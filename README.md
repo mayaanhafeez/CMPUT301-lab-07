@@ -5,7 +5,7 @@
 - **CCID:** mhafeez1
 
 ## References and Resources
-List any resources used here, or simply put `N/A` if not applicable.
+N/A
 
 ## Verbal Collaboration
-N/A
+- Claude (Opus 5.5): helped debug imports, package declarations.

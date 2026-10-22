@@ -1,5 +1,6 @@
 package com.example.lab_07
 
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -41,6 +42,54 @@ class FormulaZeroTest {
         composeTestRule
             .onNodeWithText("Canada")
             .assertExists()
+
+        // return to home screen
+        composeTestRule
+            .onNodeWithTag("backButton")
+            .performClick()
+
+        // verify return to home screen
+        composeTestRule
+            .onNodeWithText("FormulaZero Home")
+            .assertExists()
+    }
+
+    @Test
+    fun navigate_to_drivers_add_and_clear_drivers_and_return_home() {
+        // navigate to drivers screen
+        composeTestRule
+            .onNodeWithTag("driversButton")
+            .performClick()
+
+        // verify drivers screen
+        composeTestRule
+            .onNodeWithText("FormulaZero Drivers")
+            .assertExists()
+
+        // enter driver name
+        composeTestRule
+            .onNodeWithTag("driverInput")
+            .performTextInput("Lewis Hamilton")
+
+        // add driver
+        composeTestRule
+            .onNodeWithTag("addDriverButton")
+            .performClick()
+
+        // verify driver appears
+        composeTestRule
+            .onNodeWithText("Lewis Hamilton")
+            .assertIsDisplayed()
+
+        // clear drivers
+        composeTestRule
+            .onNodeWithTag("clearDriversButton")
+            .performClick()
+
+        // verify driver is removed
+        composeTestRule
+            .onNodeWithText("Lewis Hamilton")
+            .assertDoesNotExist()
 
         // return to home screen
         composeTestRule
